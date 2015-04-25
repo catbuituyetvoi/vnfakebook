@@ -1,0 +1,21 @@
+Write a Status: <div id="loading" style="display:none">Loading</div>
+<%= form_for @status , url: {controller: "status", action: "create"},remote: true do |f| %>
+
+  <div class="field">
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Post', class: 'button small right' %>
+  </div>
+<% end %>
+
+<% @post.each do |post| %>
+<div class="row stream">
+	<%= post.status.content  %>
+</div>
+<% end %>
+
+
+
+

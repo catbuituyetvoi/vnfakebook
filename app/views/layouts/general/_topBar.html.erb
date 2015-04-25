@@ -1,0 +1,5 @@
+<% if  current_user %>
+	<%= render "layouts/auth/topBar" %>
+<% else %>
+	<%= render "layouts/guest/topBar" %>
+<% end %>

@@ -1,0 +1,40 @@
+<nav class="top-bar" data-topbar role="navigation">
+		  <ul class="title-area">
+		    <li class="name">
+		      <h1><a href="<%= root_path %>">Fakebook</a></h1>
+		    </li>
+		     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+		    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		  </ul>
+
+		  <section class="top-bar-section">
+		    
+
+		    <!-- Left Nav Section -->
+		    <ul class="right">
+		      <li class="has-form">
+					  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+						  <div class="small-4 columns">
+						    
+						    <%= f.email_field :email, autofocus: true, placeholder: 'email' %>
+						    <% if devise_mapping.rememberable? -%>
+						
+						      <%= f.check_box :remember_me %>
+						      <%= f.label :remember_me %>
+						  
+						  <% end -%>
+						  </div>
+
+						  <div class="small-4 columns">
+						  
+						    <%= f.password_field :password, autocomplete: "off", placeholder: 'password'%>
+						  </div>
+
+						  <div class="small-4 columns">
+						    <%= f.submit "Log in", class: 'button' %>
+						  </div>
+						<% end %>
+					</li>
+		    </ul>
+		  </section>
+		</nav>
