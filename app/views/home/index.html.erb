@@ -1,4 +1,6 @@
-Write a Status: <div id="loading" style="display:none">Loading</div>
+Write a Status: <div id="loading" class="right" style="display:none">
+	<%= image_tag("home/loading.gif") %>
+</div>
 <%= form_for @status , url: {controller: "status", action: "create"},remote: true do |f| %>
 
   <div class="field">

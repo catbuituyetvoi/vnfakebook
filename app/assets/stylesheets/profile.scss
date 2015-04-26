@@ -1,3 +1,38 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.profileCover
+{
+	position: relative;
+
+	.coverImage{
+		height: 315px;
+		background-color:red;
+	}
+	.profileAvatar{
+		height:160px;
+		width:160px;
+		position:absolute;
+		background-color:green;
+		border: 4px solid #FFF;
+		border-radius: 2px;
+		box-shadow: none;
+		left: 15px;
+		margin-top: 0px;
+		top: 234px;
+	}
+
+	.profileFullname{
+		bottom: 12px;
+		left: 201px;
+		position: absolute;
+
+		color: #FFF;
+		text-rendering: optimizelegibility;
+		text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 30px;
+	}
+}

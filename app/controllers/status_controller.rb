@@ -9,10 +9,14 @@ class StatusController < ApplicationController
   def create
     @post = current_user.post.new
     @post.post_type ="status"
-    @status = @post.build_status(status_params)
+
+    @status = Status.new(status_params)
+    @status.post = @post
 
     respond_to do |format|
-      if @post.save
+      
+      if @status.save
+
         format.js {}
         format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @line_item }

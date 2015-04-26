@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
 	rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
  
- 	layout "landing", only: [:getting_started]
+ 	layout "landing", only: [:show, :getting_started]
 	#Getting started After Registration
  	def getting_started
  	
