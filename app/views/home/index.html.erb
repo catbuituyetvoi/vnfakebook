@@ -1,22 +1,36 @@
 Write a Status: <div id="loading" class="right" style="display:none">
 	<%= image_tag("home/loading.gif") %>
 </div>
-<%= form_for @status , url: {controller: "status", action: "create"},remote: true do |f| %>
+<div class="row">
+<%= form_for @status , class: "clearfix", url: {controller: "status", action: "create"},remote: true do |f| %>
 
   <div class="field">
     <%= f.text_area :content %>
   </div>
 
   <div class="actions">
-    <%= f.submit 'Post', class: 'button small right' %>
+    <%= f.submit 'Post', class: 'button tiny right' %>
   </div>
 <% end %>
-
+</div>
 <% @post.each do |post| %>
 <div class="row stream">
-	<%= post.status.content  %>
+	
+		<div class="small-2 columns postOwnerAvatar">
+			<%= image_tag( post.owner.image.mini_avatar.url )  %>
+		</div>
+		<div class="small-10 columns no-padding">
+			<p class="postOwner"> <%= post.owner.fullname  %> </p>
+			<div class="postCreateTime"> <%= time_ago_in_words( post.createTime )  %> </div>
+		</div>
+
+	<div class="postStatusContent small-12 columns"><%= post.status.content  %></div>
+	<div class="small-12 postAction">
+			<%= link_to "Like", like_post_path(post), :data => {:like => true, :method => "post" }, remote: true %>
+	</div>
 </div>
 <% end %>
+
 
 
 

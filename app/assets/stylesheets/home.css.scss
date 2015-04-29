@@ -6,4 +6,50 @@
 	background-color:red !important;
 	width:18px;
 	height:18px;
+
 }
+	
+	.guestTopBar{
+		.top-bar a
+		{
+			font-size: 33px;
+			line-height: 70px;
+		}
+
+
+		label{
+			color:white;
+		}
+
+		.top-bar{
+			height: 70px;
+		}
+		.name{
+			line-height: 70px;
+		}
+	}
+	#friendRequestBox{
+		background-color: white;
+		width: 370px;
+		height: 300px;
+		position: absolute;
+		right: 157px;
+		top: 45px;
+		z-index: 3;
+		display:none;
+
+		border: 1px solid rgba(100, 100, 100, 0.4);
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
+
+
+		padding:20px;
+	}
+	#friendRequestBox .eachRequestContainer{
+		padding-top:10px;
+		padding-bottom: 10px;
+		border-top: 1px solid #E9E9E9;
+		border-bottom: 1px solid #E9E9E9;
+	}
+		#friendRequestBox input[type=submit]{
+			width: 100%;
+		}

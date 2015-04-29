@@ -23,15 +23,23 @@
 		  	</ul>
 		    <!-- Left Nav Section -->
 		    <ul class="right">
+		    	<li class="name" id="friendRequestIcon">
+		    		<a>FR</a>
+		    	</li>
 		    	<li class="name topbar-avatar">
-		    	<%= image_tag(current_user.image.mini_avatar.url) %>
+		    		<a>
+		    			<%= image_tag(current_user.image.mini_avatar.url) %>
+		    		</a>
 		    	</li>
 		    	<li class="name">
-		    		<%= link_to current_user.fullname %>
+		    		<%= link_to current_user.fullname, show_profile_path(current_user ) %>
 		    	</li>
 		    	<li class="name">
 		      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 		      </li>
 		    </ul>
 		  </section>
-		</nav>
+		  <div id="friendRequestBox">
+					<%= render "relation/friend_request" %>
+		  </div>
+</nav>

@@ -5,6 +5,7 @@
 	<div class="coverImage">
 	</div>
 	<div class="profileAvatar">
+		<%= image_tag(@user.image.avatar.url) %>
 	</div>
 
 	<div class="profileFullname">
@@ -13,13 +14,49 @@
 </div>
 
 <div id="profileHeadline">
+	<div class="profileAction">
+
+	<div class="row">
+
+	<div class="small-6 right columns">
+
+		<% if current_user.is_friend_with( @user.id )  %>
+				<%= button_to "Friend", send_friend_request_path(@user),remote: true, id: 'friend-btn', class: 'right button tiny' %>
+		<% elsif current_user.is_sent_request_to( @user.id ) %>
+				<%= button_to "Friend request sent", send_friend_request_path(@user),remote: true, id: 'follow-btn', class: 'right button tiny' %>
+		<% elsif current_user.is_pending_request_from( @user.id ) %>
+				<%= button_to "Reply friend request", send_friend_request_path(@user),remote: true, id: 'follow-btn', class: 'right button tiny' %>
+		<% else %>
+					<%= button_to "Add friend", send_friend_request_path(@user),remote: true, id: 'add-friend-btn', class: 'right button tiny' %>
+		<% end %>
+
+		</div>
+
+		<div class="small-6 right columns">
+
+				<% if current_user.is_following( @user.id )  %>
+						<%= button_to "Following", follow_user_path(@user),remote: true, id: 'follow-btn', class: 'right button tiny' %>
+				<% else %>
+						<%= button_to "Follow", follow_user_path(@user),remote: true, id: 'follow-btn', class: 'right button tiny' %>
+				<% end %>
+
+		</div>
+		
+
+		</div>
+
+	</div>
+	<%= link_to "More", show_friend_path(@user), class: "right" %>
+	<%= link_to "Friend", show_friend_path(@user), class: "right" %>
+	<%= link_to "Photos", show_friend_path(@user), class: "right" %>
+	<%= link_to "About", show_friend_path(@user), class: "right" %>
+	<%= link_to "Timeline", show_friend_path(@user), class: "right" %>
 
 </div>
 
 <h1>Profile#show</h1>
+
 <p>Find me in app/views/profile/show.html.erb</p>
-
-
 
 
 </div>

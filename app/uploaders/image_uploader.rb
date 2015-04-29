@@ -34,7 +34,12 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create mini versions for home and symbol
   version :mini_avatar do
-     process :resize_to_fit => [60, 60]
+     process :resize_to_fit => [56, 56]
+  end
+
+  # Create mini versions for home and symbol
+  version :comment_avatar do
+     process :resize_to_fit => [40, 40]
   end
 
   # Create different versions of your uploaded files:

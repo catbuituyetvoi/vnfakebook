@@ -19,7 +19,10 @@
 		box-shadow: none;
 		left: 15px;
 		margin-top: 0px;
-		top: 234px;
+		top: 180px;
+		z-index: 2;
+
+		overflow:hidden;
 	}
 
 	.profileFullname{
@@ -34,5 +37,31 @@
 		font-size: 24px;
 		font-weight: 500;
 		line-height: 30px;
+	}
+}
+
+#profileHeadline{
+	height: 43px;
+	background-color: white;
+	line-height: 43px;
+	position: relative;
+
+	.profileAction{
+		position:absolute;
+		right:0px;
+		top: -45px;
+
+	}
+	a{
+		border-right: 1px solid #E9EAED;
+		float: left;
+		font-size: 14px;
+		font-weight: bold;
+		height: 43px;
+		line-height: 3.05;
+		padding: 0px 17px;
+		position: relative;
+		vertical-align: middle;
+		white-space: nowrap;
 	}
 }

@@ -1,0 +1,27 @@
+<div class="row">
+
+Friend Request:
+<% current_user.friendRequest.each do |request|  %>
+<div class="eachRequestContainer" id="request-from-<%= request.id %>">
+
+<div class="row">
+	<div class="small-2 columns">
+		<%= image_tag( request.from_user.image.mini_avatar.url ) %>
+	</div>
+	<div class="small-4 columns">
+		<%= request.from_user.fullname %>
+	</div>
+
+	<div class="small-3 columns">
+		<%= button_to "Accept", accept_friend_request_path(request), remote: true, class: 'button small' %>
+	</div>
+	<div class="small-3 columns">
+			<%= button_to "Deny", deny_friend_request_path(request), remote: true, class: 'button tiny' %>
+	</div>
+</div>
+
+</div>
+
+<% end %>
+
+</div>

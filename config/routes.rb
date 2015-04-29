@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'profile/show'
 
   get 'profile/:id' => 'profile#show', as: :show_profile
@@ -8,13 +9,28 @@ Rails.application.routes.draw do
 
   post 'status/update'
 
+  post 'relation/sendFriend/:id' => 'relation#send_friend_request', as: :send_friend_request
+
+  post 'relation/acceptFriend/:id' => 'relation#accept_friend_request', as: :accept_friend_request
+
+  post 'relation/denyFriend/:id' => 'relation#deny_friend_request', as: :deny_friend_request
+
+  post 'follow/:id' => 'relation#follow_user', as: :follow_user
+
+  post 'post/like/:id' => 'post#like', as: :like_post
+
+  get 'friend/:id' => 'relation#get_friend_list', as: :show_friend
+
   get 'status/destroy'
+
+
 
   post 'status/create'
 
   get 'gettingstarted' => 'profile#getting_started', as: :gettingstarted_profile
 
   post 'upload/avatar' => 'profile#upload_avatar'
+
   devise_for :users, :path_names => {:sign_in => 'login', :sign_out => 'logout',:sign_up => 'signup' },:controllers => { :registrations => "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

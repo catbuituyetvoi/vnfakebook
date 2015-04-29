@@ -7,10 +7,15 @@ class User::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  #POST /resource
+   def create
+
+      super do
+        @go = GeneralObject.new
+        resource.general_object = @go
+        @go.save
+      end
+   end
 
   # GET /resource/edit
   # def edit

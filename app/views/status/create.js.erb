@@ -1,2 +1,2 @@
-$('.stream').first().before("<%= escape_javascript render partial: 'newStatus', object: @status %>");
+$('.stream').first().before("<%= escape_javascript render partial: 'newStatus', locals: { post: @post } %>");
 $('#status_content').val("");

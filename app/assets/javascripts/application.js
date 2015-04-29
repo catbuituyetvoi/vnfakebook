@@ -28,4 +28,11 @@ jQuery(function($) {
     .bind("ajax:success", function(xhr, data, status) {
      	
     });
+
+   $('#friendRequestIcon').click(function(){
+
+   		$.ajax
+
+   		$('#friendRequestBox').toggle();
+   });
 });

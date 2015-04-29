@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424080551) do
+ActiveRecord::Schema.define(version: 20150428094401) do
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "from_user",  limit: 4
+    t.integer  "to_user",    limit: 4
+    t.integer  "notify",     limit: 4
+    t.integer  "follow",     limit: 4
+    t.integer  "friend",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "general_objects", force: :cascade do |t|
+    t.string   "type",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "username",   limit: 255
+  end
 
   create_table "posts", force: :cascade do |t|
     t.integer  "object_id",  limit: 4
@@ -22,6 +39,14 @@ ActiveRecord::Schema.define(version: 20150424080551) do
   end
 
   add_index "posts", ["posting_id"], name: "index_posts_on_post_id", using: :btree
+
+  create_table "relations", force: :cascade do |t|
+    t.integer  "from_user",  limit: 4
+    t.integer  "to_user",    limit: 4
+    t.integer  "state",      limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "statuses", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -47,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150424080551) do
     t.datetime "updated_at",                                      null: false
     t.string   "fullname",               limit: 255
     t.string   "image",                  limit: 255
+    t.integer  "object_id",              limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
