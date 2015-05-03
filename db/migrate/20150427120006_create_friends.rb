@@ -5,7 +5,7 @@ class CreateFriends < ActiveRecord::Migration
       t.integer :to_user
       t.integer :notify
       t.integer :follow
-      t.integer :friend
+      t.integer :is_friend
 
       t.timestamps null: false
     end

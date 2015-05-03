@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   post 'post/like/:id' => 'post#like', as: :like_post
 
+  post 'post/:id/newComment' => 'post#new_comment', as: :new_post_comment
+
   get 'friend/:id' => 'relation#get_friend_list', as: :show_friend
 
   get 'status/destroy'

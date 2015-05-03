@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
 	default_scope  { order(created_at: :desc) }
 	#validates_associated :status
 
+	has_many :comment
+	
 	def createTime
 		self.created_at
 	end

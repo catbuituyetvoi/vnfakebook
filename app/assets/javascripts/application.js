@@ -35,4 +35,6 @@ jQuery(function($) {
 
    		$('#friendRequestBox').toggle();
    });
+
+   
 });

@@ -1,16 +1,14 @@
 class RelationController < ApplicationController
 	before_action :set_user, only: [:get_friend_list, :send_friend_request, :accept_friend_request, :follow_user]
 
-
   def get_friend_list
     @friend = @user.get_friend_list
   end
 
-
   def send_friend_request
   	Relation.find_or_create_by!("from_user" => current_user,"to_user" => @user)
     #Important, if User privacy allow Followable
-    Friend.find_or_create_by!("from_user" => current_user,"to_user" => @user, "follow" => 1)
+    current_user.friend.find_or_create_by!("to_user" => @user, "follow" => 1)
   end
   
 

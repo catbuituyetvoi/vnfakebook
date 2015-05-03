@@ -13,25 +13,9 @@ Write a Status: <div id="loading" class="right" style="display:none">
   </div>
 <% end %>
 </div>
-<% @post.each do |post| %>
-<div class="row stream">
-	
-		<div class="small-2 columns postOwnerAvatar">
-			<%= image_tag( post.owner.image.mini_avatar.url )  %>
-		</div>
-		<div class="small-10 columns no-padding">
-			<p class="postOwner"> <%= post.owner.fullname  %> </p>
-			<div class="postCreateTime"> <%= time_ago_in_words( post.createTime )  %> </div>
-		</div>
 
-	<div class="postStatusContent small-12 columns"><%= post.status.content  %></div>
-	<div class="small-12 postAction">
-			<%= link_to "Like", like_post_path(post), :data => {:like => true, :method => "post" }, remote: true %>
-	</div>
-</div>
+<% @feed.each do |post| %>
+		<% if post.post_type == "status" %>
+				<p><%= post.status.content %></p>
+		<% end %>
 <% end %>
-
-
-
-
-

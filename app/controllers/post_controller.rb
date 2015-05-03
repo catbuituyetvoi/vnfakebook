@@ -1,7 +1,7 @@
 class PostController < ApplicationController
   #Authentication before do these action
   before_filter :authenticate_user!, only: [:edit, :create, :update, :destroy]
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:new_comment, :edit, :update, :destroy]
 
 
   def like
@@ -20,6 +20,31 @@ class PostController < ApplicationController
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  
+
+  def new_comment
+    comment_content = params[:content]
+
+    @new_comment = @post.comment.new(:content => comment_content)
+    @new_comment.user = current_user
+
+    respond_to do |format|
+      
+      if @new_comment.save
+
+        format.js {}
+        format.html { redirect_to root_path }
+        format.json { render :show, status: :created, location: @line_item }
+      else
+        format.js {}
+        format.html { render :new }
+
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end

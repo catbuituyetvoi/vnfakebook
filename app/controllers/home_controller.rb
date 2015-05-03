@@ -7,6 +7,8 @@ class HomeController < ApplicationController
  		end
 
  		@status = Status.new
- 		@post = current_user.post
+
+ 		@feed = current_user.feed
+ 		
   end
 end
